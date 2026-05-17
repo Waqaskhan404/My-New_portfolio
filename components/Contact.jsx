@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useIsMobile } from '@/hooks/useIsMobile'
 
@@ -35,6 +35,11 @@ const inputStyle = (isMobile) => ({
 export default function Contact() {
   const [status, setStatus] = useState('idle') // idle | loading | success | error
   const isMobile = useIsMobile()
+  const resetRef = useRef(null)
+
+  useEffect(() => {
+    return () => { clearTimeout(resetRef.current) }
+  }, [])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -57,16 +62,16 @@ export default function Contact() {
       if (res.ok) {
         setStatus('success')
         e.target.reset()
-        setTimeout(() => setStatus('idle'), 5000)
+        resetRef.current = setTimeout(() => setStatus('idle'), 5000)
       } else {
         console.error('Formspree error:', data)
         setStatus('error')
-        setTimeout(() => setStatus('idle'), 4000)
+        resetRef.current = setTimeout(() => setStatus('idle'), 4000)
       }
     } catch (err) {
       console.error('Network error:', err)
       setStatus('error')
-      setTimeout(() => setStatus('idle'), 4000)
+      resetRef.current = setTimeout(() => setStatus('idle'), 4000)
     }
   }
 

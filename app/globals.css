@@ -21,12 +21,17 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100%;
+}
 
 body {
   background: var(--bg);
   color: var(--text);
   overflow-x: hidden;
+  max-width: 100%;
   cursor: none;
   font-family: var(--font-inter, Inter, sans-serif);
 }

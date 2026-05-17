@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useIsMobile } from '@/hooks/useIsMobile'
 
@@ -10,6 +10,11 @@ function useTypewriter() {
   const [idx, setIdx] = useState(0)
   const [deleting, setDeleting] = useState(false)
   const [wait, setWait] = useState(false)
+  const pauseRef = useRef(null)
+
+  useEffect(() => {
+    return () => { clearTimeout(pauseRef.current) }
+  }, [])
 
   useEffect(() => {
     if (wait) return
@@ -20,7 +25,7 @@ function useTypewriter() {
           setText(current.slice(0, text.length + 1))
         } else {
           setWait(true)
-          setTimeout(() => { setWait(false); setDeleting(true) }, 1600)
+          pauseRef.current = setTimeout(() => { setWait(false); setDeleting(true) }, 1600)
         }
       } else {
         if (text.length > 0) {

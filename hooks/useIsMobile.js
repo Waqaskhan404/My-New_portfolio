@@ -1,13 +1,15 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useSyncExternalStore } from 'react'
+
+function subscribe(cb) {
+  window.addEventListener('resize', cb)
+  return () => window.removeEventListener('resize', cb)
+}
 
 export function useIsMobile(breakpoint = 768) {
-  const [isMobile, setIsMobile] = useState(false)
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < breakpoint)
-    check()
-    window.addEventListener('resize', check)
-    return () => window.removeEventListener('resize', check)
-  }, [breakpoint])
-  return isMobile
+  return useSyncExternalStore(
+    subscribe,
+    () => window.innerWidth < breakpoint,
+    () => false
+  )
 }
