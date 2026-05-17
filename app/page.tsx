@@ -1,3 +1,4 @@
+import Preloader from '@/components/Preloader'
 import CustomCursor from '@/components/CustomCursor'
 import Particles from '@/components/Particles'
 import Navbar from '@/components/Navbar'
@@ -16,6 +17,7 @@ import StructuredData from '@/components/StructuredData'
 export default function Home() {
   return (
     <>
+      <Preloader />
       <CustomCursor />
       <Particles />
       <Navbar />

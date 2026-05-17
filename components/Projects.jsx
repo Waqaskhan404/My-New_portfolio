@@ -1,5 +1,5 @@
 'use client'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useIsMobile } from '@/hooks/useIsMobile'
 
@@ -60,6 +60,45 @@ const projects = [
     url: 'https://cableco-ten.vercel.app/',
   },
 ]
+
+function LiveLink({ url, accent }) {
+  const [hovered, setHovered] = useState(false)
+  return (
+    <a
+      href={url}
+      target="_blank"
+      rel="noreferrer"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem',
+        padding: '0.6rem 1rem',
+        borderRadius: '10px',
+        border: `1px solid ${hovered ? accent : 'rgba(255,255,255,0.1)'}`,
+        background: hovered ? `${accent}18` : 'rgba(255,255,255,0.03)',
+        color: hovered ? accent : '#8892a4',
+        textDecoration: 'none',
+        fontFamily: 'var(--font-fira, monospace)',
+        fontSize: '0.78rem',
+        fontWeight: 500,
+        letterSpacing: '0.04em',
+        transition: 'all 0.25s ease',
+        boxShadow: hovered ? `0 0 18px ${accent}22` : 'none',
+      }}
+    >
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <line x1="2" y1="12" x2="22" y2="12" />
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+      </svg>
+      Live Preview
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+        style={{ transform: hovered ? 'translate(2px,-2px)' : 'none', transition: 'transform 0.2s' }}>
+        <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
+      </svg>
+    </a>
+  )
+}
 
 function TiltCard({ children, isMobile }) {
   const ref = useRef(null)
@@ -163,9 +202,10 @@ export default function Projects() {
                     <div style={{ fontFamily: 'var(--font-orbitron,sans-serif)', fontSize: isMobile ? '0.88rem' : '1rem', fontWeight: 700, marginBottom: '0.2rem' }}>{title}</div>
                     <div style={{ fontFamily: 'var(--font-fira,monospace)', fontSize: '0.75rem', color: accent, marginBottom: '0.7rem' }}>{sub}</div>
                     <p style={{ color: '#8892a4', fontSize: '0.86rem', lineHeight: 1.75, marginBottom: '1rem', flex: 1 }}>{desc}</p>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem' }}>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem', marginBottom: '1.1rem' }}>
                       {tags.map(t => <span key={t} className={purple ? 'tag-p' : 'tag'}>{t}</span>)}
                     </div>
+                    <LiveLink url={url} accent={accent} />
                   </div>
                 </div>
               </TiltCard>

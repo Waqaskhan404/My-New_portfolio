@@ -36,6 +36,15 @@ const categories = [
       { name: 'Git',        abbr: 'GIT', color: '#F05032', bg: 'rgba(240,80,50,0.12)',   border: 'rgba(240,80,50,0.25)' },
     ],
   },
+  {
+    title: 'Forms & Validation',
+    color: '#a78bfa',
+    skills: [
+      { name: 'React Hook Form', abbr: 'RHF', color: '#EC5990', bg: 'rgba(236,89,144,0.12)', border: 'rgba(236,89,144,0.25)' },
+      { name: 'Yup',             abbr: 'YUP', color: '#f59e0b', bg: 'rgba(245,158,11,0.12)', border: 'rgba(245,158,11,0.25)' },
+      { name: 'Zod',             abbr: 'ZOD', color: '#3b82f6', bg: 'rgba(59,130,246,0.12)', border: 'rgba(59,130,246,0.25)' },
+    ],
+  },
 ]
 
 const container = { hidden: {}, show: { transition: { staggerChildren: 0.06 } } }
