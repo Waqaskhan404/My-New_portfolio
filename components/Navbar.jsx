@@ -39,6 +39,7 @@ export default function Navbar() {
   return (
     <nav style={{
       position: 'fixed', top: 0, width: '100%', zIndex: 1000,
+      overflow: 'hidden',
       padding: scrolled ? '0.75rem 1.5rem' : '1.2rem 1.5rem',
       background: scrolled || open ? 'rgba(10,10,15,0.95)' : 'transparent',
       backdropFilter: scrolled || open ? 'blur(20px)' : 'none',

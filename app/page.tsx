@@ -19,7 +19,7 @@ export default function Home() {
       <CustomCursor />
       <Particles />
       <Navbar />
-      <main>
+      <main style={{ overflowX: 'hidden' }}>
         <Hero />
         <About />
         <Skills />
