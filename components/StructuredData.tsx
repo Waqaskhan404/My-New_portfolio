@@ -3,13 +3,13 @@ export default function StructuredData() {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: 'Waqas Khan',
-    url: 'https://waqaskhan.dev',
+    url: 'https://waqas-khan-frontend-dev.vercel.app',
     email: 'waqas.khan.40004@gmail.com',
     telephone: '+923045454166',
     jobTitle: 'Frontend Developer',
     description:
       'Frontend Developer with 2+ years of experience specializing in React.js, Next.js, and modern UI development. Based in Islamabad, Pakistan.',
-    image: 'https://waqaskhan.dev/og-image.png',
+    image: 'https://waqas-khan-frontend-dev.vercel.app/og-image.png',
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Islamabad',
@@ -44,7 +44,7 @@ export default function StructuredData() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'Waqas Khan Portfolio',
-    url: 'https://waqaskhan.dev',
+    url: 'https://waqas-khan-frontend-dev.vercel.app',
     description: 'Personal portfolio of Waqas Khan, Frontend Developer.',
     author: {
       '@type': 'Person',

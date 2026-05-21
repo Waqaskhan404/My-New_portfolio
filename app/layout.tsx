@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'sw
 const orbitron = Orbitron({ subsets: ['latin'], variable: '--font-orbitron', weight: ['400','700','900'], display: 'swap' })
 const firaCode = Fira_Code({ subsets: ['latin'], variable: '--font-fira', weight: ['300','400','500'], display: 'swap' })
 
-const BASE_URL = 'https://waqaskhan.dev'
+const BASE_URL = 'https://waqas-khan-frontend-dev.vercel.app'
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),

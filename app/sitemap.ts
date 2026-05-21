@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
 
-const BASE_URL = 'https://waqaskhan.dev'
+const BASE_URL = 'https://waqas-khan-frontend-dev.vercel.app'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
