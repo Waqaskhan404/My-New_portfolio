@@ -4,6 +4,7 @@ import Particles from '@/components/Particles'
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
 import About from '@/components/About'
+import Services from '@/components/Services'
 import Skills from '@/components/Skills'
 import Experience from '@/components/Experience'
 import Projects from '@/components/Projects'
@@ -24,6 +25,7 @@ export default function Home() {
       <main style={{ overflowX: 'hidden' }}>
         <Hero />
         <About />
+        <Services />
         <Skills />
         <Experience />
         <Projects />

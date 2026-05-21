@@ -135,7 +135,7 @@ export default function Projects() {
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <motion.div initial={{ opacity:0,y:40 }} whileInView={{ opacity:1,y:0 }} viewport={{ once:true }}
           transition={{ duration:.7 }} style={{ textAlign:'center', marginBottom:'3rem' }}>
-          <span className="section-tag">// 04. projects</span>
+          <span className="section-tag">// 05. projects</span>
           <h2 className="section-title">Featured <span>Projects</span></h2>
           <div className="section-line" />
         </motion.div>

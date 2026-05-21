@@ -61,7 +61,7 @@ export default function Skills() {
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <motion.div initial={{ opacity:0,y:40 }} whileInView={{ opacity:1,y:0 }} viewport={{ once:true }}
           transition={{ duration:.7 }} style={{ textAlign:'center', marginBottom:'3rem' }}>
-          <span className="section-tag">// 02. tech_stack</span>
+          <span className="section-tag">// 03. tech_stack</span>
           <h2 className="section-title">My <span>Skills</span></h2>
           <div className="section-line" />
         </motion.div>

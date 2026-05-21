@@ -5,11 +5,12 @@ import { useIsMobile } from '@/hooks/useIsMobile'
 
 const links = [
   { href: '#about',      label: 'About',      num: '01' },
-  { href: '#skills',     label: 'Skills',     num: '02' },
-  { href: '#experience', label: 'Experience', num: '03' },
-  { href: '#projects',   label: 'Projects',   num: '04' },
-  { href: '#education',  label: 'Education',  num: '05' },
-  { href: '#contact',    label: 'Contact',    num: '06' },
+  { href: '#services',   label: 'Services',   num: '02' },
+  { href: '#skills',     label: 'Skills',     num: '03' },
+  { href: '#experience', label: 'Experience', num: '04' },
+  { href: '#projects',   label: 'Projects',   num: '05' },
+  { href: '#education',  label: 'Education',  num: '06' },
+  { href: '#contact',    label: 'Contact',    num: '07' },
 ]
 
 export default function Navbar() {
@@ -21,7 +22,7 @@ export default function Navbar() {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 50)
-      const ids = ['about','skills','experience','projects','education','contact']
+      const ids = ['about','services','skills','experience','projects','education','contact']
       let found = ''
       for (let i = ids.length - 1; i >= 0; i--) {
         const el = document.getElementById(ids[i])

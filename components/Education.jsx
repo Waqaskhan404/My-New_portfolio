@@ -19,7 +19,7 @@ export default function Education() {
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <motion.div initial={{ opacity:0,y:40 }} whileInView={{ opacity:1,y:0 }} viewport={{ once:true }}
           transition={{ duration:.7 }} style={{ textAlign:'center', marginBottom:'3rem' }}>
-          <span className="section-tag">// 05. education & certs</span>
+          <span className="section-tag">// 06. education & certs</span>
           <h2 className="section-title">Education & <span>Certifications</span></h2>
           <div className="section-line" />
         </motion.div>
