@@ -109,6 +109,44 @@ export default function Navbar() {
             </ul>
           )}
 
+          {/* ── Resume button (desktop) ── */}
+          {!isMobile && (
+            <a
+              href="/Waqas_Khan_Resume.pdf"
+              download="Waqas_Khan_Resume.pdf"
+              style={{
+                display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
+                padding: '0.5rem 1.1rem',
+                borderRadius: '8px',
+                border: '1px solid rgba(0,245,255,0.35)',
+                background: 'rgba(0,245,255,0.05)',
+                color: '#00f5ff',
+                textDecoration: 'none',
+                fontFamily: 'var(--font-fira, monospace)',
+                fontSize: '0.78rem',
+                fontWeight: 500,
+                letterSpacing: '0.04em',
+                transition: 'all 0.25s ease',
+                flexShrink: 0,
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.background = 'rgba(0,245,255,0.12)'
+                e.currentTarget.style.boxShadow = '0 0 20px rgba(0,245,255,0.2)'
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.background = 'rgba(0,245,255,0.05)'
+                e.currentTarget.style.boxShadow = 'none'
+              }}
+            >
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Resume
+            </a>
+          )}
+
           {/* ── Hamburger ── */}
           {isMobile && (
             <button
@@ -253,6 +291,38 @@ export default function Navbar() {
                 )
               })}
             </nav>
+
+            {/* Resume download */}
+            <motion.a
+              href="/Waqas_Khan_Resume.pdf"
+              download="Waqas_Khan_Resume.pdf"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.55 }}
+              style={{
+                position: 'relative', zIndex: 1,
+                display: 'inline-flex', alignItems: 'center', gap: '0.6rem',
+                padding: '0.85rem 1.6rem',
+                borderRadius: '12px',
+                border: '1px solid rgba(0,245,255,0.3)',
+                background: 'rgba(0,245,255,0.06)',
+                color: '#00f5ff',
+                textDecoration: 'none',
+                fontFamily: 'var(--font-fira, monospace)',
+                fontSize: '0.88rem',
+                fontWeight: 600,
+                letterSpacing: '0.04em',
+                marginTop: '1.8rem',
+                alignSelf: 'flex-start',
+              }}
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Download Resume
+            </motion.a>
 
             {/* Bottom tag line */}
             <motion.p

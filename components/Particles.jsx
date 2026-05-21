@@ -1,12 +1,14 @@
 'use client'
 import { useEffect, useRef } from 'react'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 export default function Particles() {
   const canvasRef = useRef(null)
+  const isMobile = useIsMobile()
 
   useEffect(() => {
     const canvas = canvasRef.current
-    if (!canvas) return
+    if (!canvas || isMobile) return
     const ctx = canvas.getContext('2d')
 
     let w = (canvas.width = window.innerWidth)
@@ -87,6 +89,8 @@ export default function Particles() {
       window.removeEventListener('mousemove', onMouseMove)
     }
   }, [])
+
+  if (isMobile) return null
 
   return (
     <canvas

@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
 
-const BASE_URL = 'https://waqaskhan.dev' // ← update to your live domain
+const BASE_URL = 'https://waqaskhan.dev'
 
 export default function robots(): MetadataRoute.Robots {
   return {

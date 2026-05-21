@@ -61,7 +61,7 @@ export default function Hero() {
   return (
     <section id="hero" style={{
       minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center',
-      position: 'relative', zIndex: 1, padding: isMobile ? '5rem 1.2rem 4rem' : '0 2rem',
+      position: 'relative', zIndex: 1, padding: isMobile ? '3.5rem 1.2rem 2.5rem' : '0 2rem',
       overflow: 'hidden',
     }}>
       {/* Floating orbs */}
@@ -88,7 +88,7 @@ export default function Hero() {
             border: '1px solid rgba(34,197,94,0.35)',
             background: 'rgba(34,197,94,0.08)',
             backdropFilter: 'blur(10px)',
-            marginBottom: '1.5rem',
+            marginBottom: isMobile ? '0.75rem' : '1.5rem',
             fontSize: isMobile ? '0.72rem' : '0.82rem',
             color: '#4ade80',
             fontFamily: 'var(--font-fira, monospace)',
@@ -134,10 +134,21 @@ export default function Hero() {
 
         <motion.div {...fadeUp(1.0)} style={{
           display: 'flex', gap: '1rem', justifyContent: 'center',
-          flexWrap: 'wrap',
+          flexDirection: isMobile ? 'column' : 'row',
+          alignItems: isMobile ? 'stretch' : 'center',
+          width: isMobile ? 'min(100%, 320px)' : 'auto',
+          margin: isMobile ? '0 auto' : undefined,
         }}>
           <a href="#projects" className="btn-p">View My Work</a>
           <a href="#contact" className="btn-s">Hire Me</a>
+          <a href="/Waqas_Khan_Resume.pdf" download="Waqas_Khan_Resume.pdf" className="btn-r">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Download CV
+          </a>
         </motion.div>
       </div>
 

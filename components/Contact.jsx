@@ -57,19 +57,16 @@ export default function Contact() {
       })
 
       const data = await res.json()
-      console.log('Formspree response:', res.status, data)
 
       if (res.ok) {
         setStatus('success')
         e.target.reset()
         resetRef.current = setTimeout(() => setStatus('idle'), 5000)
       } else {
-        console.error('Formspree error:', data)
         setStatus('error')
         resetRef.current = setTimeout(() => setStatus('idle'), 4000)
       }
-    } catch (err) {
-      console.error('Network error:', err)
+    } catch {
       setStatus('error')
       resetRef.current = setTimeout(() => setStatus('idle'), 4000)
     }

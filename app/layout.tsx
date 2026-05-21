@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'sw
 const orbitron = Orbitron({ subsets: ['latin'], variable: '--font-orbitron', weight: ['400','700','900'], display: 'swap' })
 const firaCode = Fira_Code({ subsets: ['latin'], variable: '--font-fira', weight: ['300','400','500'], display: 'swap' })
 
-const BASE_URL = 'https://waqaskhan.dev' // ← update to your live domain
+const BASE_URL = 'https://waqaskhan.dev'
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -68,15 +68,6 @@ export const metadata: Metadata = {
     title: 'Waqas Khan | Frontend Developer',
     description:
       'Frontend Developer with 2+ years of experience. Specializing in React.js, Next.js, and modern web development. Based in Islamabad, Pakistan.',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Waqas Khan — Frontend Developer',
-        type: 'image/png',
-      },
-    ],
   },
 
   twitter: {
@@ -84,14 +75,13 @@ export const metadata: Metadata = {
     title: 'Waqas Khan | Frontend Developer',
     description:
       'Frontend Developer specializing in React.js and Next.js. Building modern, responsive web apps from Islamabad, Pakistan.',
-    images: ['/og-image.png'],
   },
 
   icons: {
     icon: [
       { url: '/favicon.svg', type: 'image/svg+xml' },
     ],
-    apple: '/apple-touch-icon.png',
+    apple: '/favicon.svg',
   },
 
   manifest: '/site.webmanifest',
