@@ -2,6 +2,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useIsMobile } from '@/hooks/useIsMobile'
+import { useScramble } from '@/hooks/useScramble'
+import MagneticButton from '@/components/MagneticButton'
 
 const ROLES = ['React JS Apps.', 'Next JS Websites.', 'Beautiful UIs.', 'Fast Web Apps.', 'Digital Solutions.']
 
@@ -48,9 +50,17 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.7, delay, ease: 'easeOut' },
 })
 
+const TECH_BADGES = [
+  { text: 'React.js',   color: '#61DAFB', style: { top: '22%',    left: '4%'   }, delay: '0s'   },
+  { text: 'Next.js',    color: '#ffffff', style: { top: '38%',    right: '4%'  }, delay: '1s'   },
+  { text: 'TypeScript', color: '#3178C6', style: { bottom: '32%', left: '3%'   }, delay: '2s'   },
+  { text: 'Tailwind',   color: '#06B6D4', style: { bottom: '22%', right: '3%'  }, delay: '3s'   },
+]
+
 export default function Hero() {
-  const typed = useTypewriter()
-  const isMobile = useIsMobile()
+  const typed      = useTypewriter()
+  const isMobile   = useIsMobile()
+  const heroName   = useScramble('Waqas Khan', 1100)
 
   const orbs = [
     { w: isMobile ? 280 : 600, h: isMobile ? 280 : 600, bg: 'radial-gradient(circle,#00f5ff,transparent)', top: '-10%', left: '-15%', delay: '0s', opacity: 0.1 },
@@ -73,6 +83,29 @@ export default function Hero() {
           animation: `float ${7 + i * 2}s ease-in-out infinite ${o.delay}`,
           pointerEvents: 'none',
         }} />
+      ))}
+
+      {/* Floating tech badges — desktop only */}
+      {!isMobile && TECH_BADGES.map(({ text, color, style, delay }) => (
+        <motion.div
+          key={text}
+          initial={{ opacity: 0, scale: 0.7 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: parseFloat(delay) * 0.4 + 1.2 }}
+          style={{
+            position: 'absolute', ...style,
+            padding: '5px 13px', borderRadius: '20px',
+            background: `${color}10`,
+            border: `1px solid ${color}30`,
+            color, fontSize: '0.7rem',
+            fontFamily: 'var(--font-fira, monospace)',
+            fontWeight: 600, pointerEvents: 'none',
+            animation: `float ${9 + parseFloat(delay)}s ease-in-out infinite ${delay}`,
+            backdropFilter: 'blur(8px)',
+            boxShadow: `0 0 18px ${color}18`,
+            whiteSpace: 'nowrap', zIndex: 0,
+          }}
+        >{text}</motion.div>
       ))}
 
       <div style={{ textAlign: 'center', maxWidth: '950px', width: '100%', position: 'relative', zIndex: 1 }}>
@@ -107,12 +140,13 @@ export default function Hero() {
           fontSize: isMobile ? '0.9rem' : '1.1rem', marginBottom: '0.8rem',
         }}>&lt; Hello, World! /&gt;</motion.p>
 
+        {/* Scramble name */}
         <motion.h1 {...fadeUp(0.4)} style={{
           fontFamily: 'var(--font-orbitron, sans-serif)',
           fontSize: 'clamp(2.4rem,8vw,6.5rem)', fontWeight: 900,
           lineHeight: 1.05, marginBottom: '1rem',
         }}>
-          <span className="gradient-text" style={{ display: 'block' }}>Waqas Khan</span>
+          <span className="gradient-text" style={{ display: 'block' }}>{heroName}</span>
         </motion.h1>
 
         <motion.div {...fadeUp(0.6)} style={{
@@ -132,6 +166,7 @@ export default function Hero() {
           crafting responsive, performant, and visually stunning digital experiences.
         </motion.p>
 
+        {/* CTA buttons with magnetic effect on desktop */}
         <motion.div {...fadeUp(1.0)} style={{
           display: 'flex', gap: '1rem', justifyContent: 'center',
           flexDirection: isMobile ? 'column' : 'row',
@@ -139,16 +174,22 @@ export default function Hero() {
           width: isMobile ? 'min(100%, 320px)' : 'auto',
           margin: isMobile ? '0 auto' : undefined,
         }}>
-          <a href="#projects" className="btn-p">View My Work</a>
-          <a href="#contact" className="btn-s">Hire Me</a>
-          <a href="/Waqas_Khan_Resume.pdf" download="Waqas_Khan_Resume.pdf" className="btn-r">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
-            </svg>
-            Download CV
-          </a>
+          <MagneticButton>
+            <a href="#projects" className="btn-p">View My Work</a>
+          </MagneticButton>
+          <MagneticButton>
+            <a href="#contact" className="btn-s">Hire Me</a>
+          </MagneticButton>
+          <MagneticButton>
+            <a href="/Waqas_Khan_Resume.pdf" download="Waqas_Khan_Resume.pdf" className="btn-r">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Download CV
+            </a>
+          </MagneticButton>
         </motion.div>
       </div>
 

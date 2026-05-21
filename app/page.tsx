@@ -1,4 +1,6 @@
 import Preloader from '@/components/Preloader'
+import ScrollProgress from '@/components/ScrollProgress'
+import CursorTrail from '@/components/CursorTrail'
 import CustomCursor from '@/components/CustomCursor'
 import Particles from '@/components/Particles'
 import Navbar from '@/components/Navbar'
@@ -19,6 +21,8 @@ export default function Home() {
   return (
     <>
       <Preloader />
+      <ScrollProgress />
+      <CursorTrail />
       <CustomCursor />
       <Particles />
       <Navbar />
