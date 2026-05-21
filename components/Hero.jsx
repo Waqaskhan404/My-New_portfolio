@@ -74,6 +74,18 @@ export default function Hero() {
       position: 'relative', zIndex: 1, padding: isMobile ? '3.5rem 1.2rem 2.5rem' : '0 2rem',
       overflow: 'hidden',
     }}>
+      {/* Aurora rotating conic gradient — desktop only */}
+      {!isMobile && (
+        <div style={{
+          position: 'absolute', top: '50%', left: '50%',
+          width: '140%', height: '140%',
+          transform: 'translate(-50%, -50%)',
+          background: 'conic-gradient(from 0deg at 50% 50%, rgba(0,245,255,0.05) 0deg, transparent 50deg, rgba(124,58,237,0.04) 120deg, transparent 170deg, rgba(255,107,107,0.03) 240deg, transparent 290deg, transparent 360deg)',
+          animation: 'spin-slow 30s linear infinite',
+          pointerEvents: 'none',
+        }} />
+      )}
+
       {/* Floating orbs */}
       {orbs.map((o, i) => (
         <div key={i} style={{

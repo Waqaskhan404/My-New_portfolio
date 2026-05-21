@@ -86,67 +86,73 @@ export default function Skills() {
                 gridTemplateColumns: `repeat(auto-fill, minmax(min(${isMobile ? '100px' : '120px'}, 100%), 1fr))`,
                 gap: isMobile ? '0.75rem' : '1rem',
               }}>
-              {skills.map(({ name, abbr, color: sc, bg, border, level }) => (
-                <motion.div key={name} variants={item}
-                  whileHover={{ y: -6, scale: 1.04 }}
-                  style={{
-                    background: 'rgba(255,255,255,0.03)',
-                    border: '1px solid rgba(255,255,255,0.07)',
-                    borderRadius: '14px',
-                    padding: isMobile ? '1rem 0.5rem 0.8rem' : '1.4rem 0.8rem 1rem',
-                    textAlign: 'center', cursor: 'default',
-                    transition: 'border-color .3s, box-shadow .3s',
-                    position: 'relative', overflow: 'hidden',
-                  }}
-                  onMouseEnter={e => { e.currentTarget.style.borderColor = sc; e.currentTarget.style.boxShadow = `0 10px 28px ${sc}28` }}
-                  onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,.07)'; e.currentTarget.style.boxShadow = 'none' }}
-                >
-                  {/* Proficiency % badge */}
-                  <span style={{
-                    position: 'absolute', top: '0.45rem', right: '0.5rem',
-                    fontFamily: 'var(--font-fira,monospace)',
-                    fontSize: '0.55rem', color: `${sc}88`, fontWeight: 700,
-                  }}>{level}%</span>
+              {skills.map(({ name, abbr, color: sc, bg, border, level }) => {
+                const sw = 3
+                const sz = isMobile ? 62 : 76
+                const r = sz / 2 - sw - 2
+                const circ = 2 * Math.PI * r
+                return (
+                  <motion.div key={name} variants={item}
+                    whileHover={{ y: -6, scale: 1.04 }}
+                    style={{
+                      background: 'rgba(255,255,255,0.03)',
+                      border: '1px solid rgba(255,255,255,0.07)',
+                      borderRadius: '14px',
+                      padding: isMobile ? '1rem 0.5rem 1rem' : '1.4rem 0.8rem 1.2rem',
+                      textAlign: 'center', cursor: 'default',
+                      transition: 'border-color .3s, box-shadow .3s',
+                      position: 'relative', overflow: 'hidden',
+                    }}
+                    onMouseEnter={e => { e.currentTarget.style.borderColor = sc; e.currentTarget.style.boxShadow = `0 10px 28px ${sc}28` }}
+                    onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,.07)'; e.currentTarget.style.boxShadow = 'none' }}
+                  >
+                    {/* Proficiency % badge */}
+                    <span style={{
+                      position: 'absolute', top: '0.45rem', right: '0.5rem',
+                      fontFamily: 'var(--font-fira,monospace)',
+                      fontSize: '0.55rem', color: `${sc}88`, fontWeight: 700,
+                    }}>{level}%</span>
 
-                  <div style={{
-                    width: isMobile ? '40px' : '50px',
-                    height: isMobile ? '40px' : '50px',
-                    borderRadius: '12px',
-                    background: bg, border: `1px solid ${border}`,
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    margin: '0 auto 0.6rem',
-                    fontFamily: 'var(--font-fira,monospace)',
-                    fontWeight: 900, color: sc,
-                    fontSize: abbr.length >= 3 ? '0.62rem' : abbr.length === 2 ? '0.85rem' : '1.05rem',
-                    letterSpacing: '-0.5px',
-                  }}>{abbr}</div>
+                    {/* Circular SVG ring + abbr icon */}
+                    <div style={{ position: 'relative', width: sz, height: sz, margin: '0 auto 0.6rem' }}>
+                      <svg width={sz} height={sz} style={{ position: 'absolute', top: 0, left: 0 }}>
+                        <g transform={`rotate(-90 ${sz / 2} ${sz / 2})`}>
+                          <circle cx={sz / 2} cy={sz / 2} r={r} fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth={sw} />
+                          <motion.circle
+                            cx={sz / 2} cy={sz / 2} r={r}
+                            fill="none" stroke={sc} strokeWidth={sw} strokeLinecap="round"
+                            strokeDasharray={circ}
+                            initial={{ strokeDashoffset: circ }}
+                            whileInView={{ strokeDashoffset: circ * (1 - level / 100) }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1.2, delay: 0.2, ease: 'easeOut' }}
+                            style={{ filter: `drop-shadow(0 0 4px ${sc}88)` }}
+                          />
+                        </g>
+                      </svg>
+                      <div style={{
+                        position: 'absolute', top: '50%', left: '50%',
+                        transform: 'translate(-50%, -50%)',
+                        width: isMobile ? '38px' : '46px',
+                        height: isMobile ? '38px' : '46px',
+                        borderRadius: '10px',
+                        background: bg, border: `1px solid ${border}`,
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        fontFamily: 'var(--font-fira,monospace)',
+                        fontWeight: 900, color: sc,
+                        fontSize: abbr.length >= 3 ? '0.58rem' : abbr.length === 2 ? '0.78rem' : '0.95rem',
+                        letterSpacing: '-0.5px',
+                      }}>{abbr}</div>
+                    </div>
 
-                  <span style={{
-                    fontSize: isMobile ? '0.68rem' : '0.76rem',
-                    fontWeight: 600, color: 'rgba(255,255,255,0.82)',
-                    display: 'block', lineHeight: 1.3, marginBottom: '0.7rem',
-                  }}>{name}</span>
-
-                  {/* Animated proficiency bar */}
-                  <div style={{
-                    height: '2px', borderRadius: '2px',
-                    background: 'rgba(255,255,255,0.06)',
-                    overflow: 'hidden',
-                  }}>
-                    <motion.div
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${level}%` }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1.1, delay: 0.2, ease: 'easeOut' }}
-                      style={{
-                        height: '100%', borderRadius: '2px',
-                        background: `linear-gradient(90deg, ${sc}, ${sc}55)`,
-                        boxShadow: `0 0 6px ${sc}66`,
-                      }}
-                    />
-                  </div>
-                </motion.div>
-              ))}
+                    <span style={{
+                      fontSize: isMobile ? '0.68rem' : '0.76rem',
+                      fontWeight: 600, color: 'rgba(255,255,255,0.82)',
+                      display: 'block', lineHeight: 1.3,
+                    }}>{name}</span>
+                  </motion.div>
+                )
+              })}
             </motion.div>
           </div>
         ))}
