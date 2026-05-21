@@ -72,31 +72,50 @@ export default function About() {
         }}>
           {/* Avatar */}
           <motion.div {...fadeUp(0.2)} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            {/* Rotating gradient ring avatar */}
+            {/* Code terminal window */}
             <div style={{
-              position: 'relative',
-              width: isMobile ? '200px' : '240px',
-              height: isMobile ? '200px' : '240px',
-              margin: '0 auto 2rem',
-              flexShrink: 0,
+              width: '100%', marginBottom: '2rem',
+              background: 'rgba(13,17,23,0.95)',
+              border: '1px solid rgba(255,255,255,0.1)',
+              borderRadius: '16px', overflow: 'hidden',
+              boxShadow: '0 25px 60px rgba(0,0,0,0.5), 0 0 40px rgba(0,245,255,0.06)',
             }}>
+              {/* Terminal title bar */}
               <div style={{
-                position: 'absolute', inset: '-5px', borderRadius: '50%',
-                background: 'conic-gradient(#00f5ff 0deg, #7c3aed 120deg, #ff6b6b 240deg, #00f5ff 360deg)',
-                animation: 'spin-slow 5s linear infinite',
-              }} />
-              <div style={{
-                position: 'absolute', inset: '4px', borderRadius: '50%',
-                background: 'var(--bg)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                zIndex: 1,
+                background: 'rgba(255,255,255,0.04)',
+                borderBottom: '1px solid rgba(255,255,255,0.07)',
+                padding: '0.7rem 1rem',
+                display: 'flex', alignItems: 'center', gap: '0.5rem',
               }}>
-                <div style={{
-                  width: '100%', height: '100%', borderRadius: '50%',
-                  background: 'linear-gradient(135deg,#0d0d1a,#0a0a0f)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: isMobile ? '4rem' : '5rem',
-                }}>👨‍💻</div>
+                {['#ff5f57','#febc2e','#28c840'].map((c, i) => (
+                  <span key={i} style={{ width: 11, height: 11, borderRadius: '50%', background: c, display: 'block', flexShrink: 0 }} />
+                ))}
+                <span style={{
+                  marginLeft: '0.6rem', color: 'rgba(255,255,255,0.22)',
+                  fontSize: '0.7rem', fontFamily: 'var(--font-fira,monospace)',
+                }}>waqas@portfolio:~$</span>
+              </div>
+
+              {/* Code body */}
+              <div style={{
+                padding: '1.2rem 1.4rem',
+                fontFamily: 'var(--font-fira,monospace)',
+                fontSize: isMobile ? '0.7rem' : '0.76rem',
+                lineHeight: 1.9,
+              }}>
+                {[
+                  [<><span style={{color:'#c792ea'}}>const</span> <span style={{color:'#82aaff'}}>developer</span> <span style={{color:'#89ddff'}}>=</span> <span style={{color:'#ffcb6b'}}>{'{'}</span></>],
+                  [<><span style={{paddingLeft:'1.2rem',display:'block'}}><span style={{color:'#f07178'}}>name</span><span style={{color:'#89ddff'}}>:</span> <span style={{color:'#c3e88d'}}>&quot;Waqas Khan&quot;</span><span style={{color:'#89ddff'}}>,</span></span></>],
+                  [<><span style={{paddingLeft:'1.2rem',display:'block'}}><span style={{color:'#f07178'}}>role</span><span style={{color:'#89ddff'}}>:</span> <span style={{color:'#c3e88d'}}>&quot;Frontend Developer&quot;</span><span style={{color:'#89ddff'}}>,</span></span></>],
+                  [<><span style={{paddingLeft:'1.2rem',display:'block'}}><span style={{color:'#f07178'}}>location</span><span style={{color:'#89ddff'}}>:</span> <span style={{color:'#c3e88d'}}>&quot;Islamabad, PK&quot;</span><span style={{color:'#89ddff'}}>,</span></span></>],
+                  [<><span style={{paddingLeft:'1.2rem',display:'block'}}><span style={{color:'#f07178'}}>experience</span><span style={{color:'#89ddff'}}>:</span> <span style={{color:'#f78c6c'}}>2</span><span style={{color:'#89ddff'}}>,</span></span></>],
+                  [<><span style={{paddingLeft:'1.2rem',display:'block'}}><span style={{color:'#f07178'}}>skills</span><span style={{color:'#89ddff'}}>:</span> <span style={{color:'#89ddff'}}>[</span><span style={{color:'#c3e88d'}}>&quot;React&quot;</span><span style={{color:'#89ddff'}}>,</span> <span style={{color:'#c3e88d'}}>&quot;Next.js&quot;</span><span style={{color:'#89ddff'}}>,</span> <span style={{color:'#c3e88d'}}>&quot;TS&quot;</span><span style={{color:'#89ddff'}}>],</span></span></>],
+                  [<><span style={{paddingLeft:'1.2rem',display:'block'}}><span style={{color:'#f07178'}}>available</span><span style={{color:'#89ddff'}}>:</span> <span style={{color:'#ff9d00'}}>true</span><span style={{color:'#89ddff'}}>,</span></span></>],
+                  [<><span style={{color:'#ffcb6b'}}>{'}'}</span><span style={{color:'#89ddff'}}>;</span></>],
+                ].map((line, i) => (
+                  <div key={i}>{line[0]}</div>
+                ))}
+                <div style={{ marginTop: '0.4rem', color: '#00f5ff', animation: 'blink-dot 1s ease infinite' }}>█</div>
               </div>
             </div>
 

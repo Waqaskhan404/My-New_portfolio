@@ -5,6 +5,7 @@ import CustomCursor from '@/components/CustomCursor'
 import Particles from '@/components/Particles'
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
+import Marquee from '@/components/Marquee'
 import About from '@/components/About'
 import Services from '@/components/Services'
 import Skills from '@/components/Skills'
@@ -28,6 +29,7 @@ export default function Home() {
       <Navbar />
       <main style={{ overflowX: 'hidden' }}>
         <Hero />
+        <Marquee />
         <About />
         <Services />
         <Skills />
